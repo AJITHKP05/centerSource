@@ -10,12 +10,10 @@ class GetimageCubit extends Cubit<GetimageState> {
   final Repository repo = Repository();
   GetimageCubit() : super(GetimageLoading());
   void getData(String filter) async {
-    print("inside vloc");
     emit(GetimageLoading());
     List<ImageModel> result = [];
     try {
       result = await repo.getData(filter);
-      print(result);
       emit(GetimageSuccess(images: result));
     } catch (e) {
       emit(GetimageFailure());
